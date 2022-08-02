@@ -1,0 +1,16 @@
+[package]
+name = "mailhog-rs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+testcontainers = "0"
+reqwest = { version = "0", features = ["json"] }
+anyhow = "1"
+serde = "1"
+chrono = "0"
+
+[dev-dependencies]
+lettre = "0"
+tokio = { version = "1", features = ["test-util", "macros"] }
+rand = "0"
