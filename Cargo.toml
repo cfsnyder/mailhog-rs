@@ -2,6 +2,8 @@
 name = "mailhog-rs"
 version = "0.1.0"
 edition = "2021"
+description = "Rust bindings for the mailhog SMTP testing API"
+license = "MIT"
 
 [dependencies]
 testcontainers = "0"
