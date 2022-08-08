@@ -15,8 +15,8 @@ pub struct MailHog {
 
 #[derive(Debug, Clone, Eq, PartialEq, serde::Serialize, serde::Deserialize)]
 pub struct ListMessagesParams {
-    start: Option<i64>,
-    limit: Option<i64>,
+    pub start: Option<i64>,
+    pub limit: Option<i64>,
 }
 
 #[derive(Debug, Clone, Eq, PartialEq, serde::Serialize, serde::Deserialize)]
@@ -31,22 +31,22 @@ pub enum SearchKind {
 
 #[derive(Debug, Clone, Eq, PartialEq, serde::Serialize, serde::Deserialize)]
 pub struct SearchParams {
-    kind: SearchKind,
-    query: String,
-    start: Option<i64>,
-    limit: Option<i64>,
+    pub kind: SearchKind,
+    pub query: String,
+    pub start: Option<i64>,
+    pub limit: Option<i64>,
 }
 
 #[derive(Debug, Clone, Eq, PartialEq, serde::Serialize, serde::Deserialize)]
 pub struct EmailAddr {
     #[serde(rename = "Mailbox")]
-    mailbox: String,
+    pub mailbox: String,
     #[serde(rename = "Domain")]
-    domain: String,
+    pub domain: String,
     #[serde(rename = "Params")]
-    params: String,
+    pub params: String,
     #[serde(rename = "Relays")]
-    relays: Option<String>,
+    pub relays: Option<String>,
 }
 
 impl Display for EmailAddr {
@@ -58,27 +58,27 @@ impl Display for EmailAddr {
 #[derive(Debug, Clone, Eq, PartialEq, serde::Serialize, serde::Deserialize)]
 pub struct MessageContent {
     #[serde(rename = "Headers")]
-    headers: HashMap<String, Vec<String>>,
+    pub headers: HashMap<String, Vec<String>>,
     #[serde(rename = "Body")]
-    body: String,
+    pub body: String,
     #[serde(rename = "Size")]
-    size: usize,
+    pub size: usize,
     #[serde(rename = "MIME")]
-    mime: Option<String>,
+    pub mime: Option<String>,
 }
 
 #[derive(Debug, Clone, Eq, PartialEq, serde::Serialize, serde::Deserialize)]
 pub struct Message {
     #[serde(rename = "ID")]
-    id: String,
+    pub id: String,
     #[serde(rename = "From")]
-    from: EmailAddr,
+    pub from: EmailAddr,
     #[serde(rename = "To")]
-    to: Vec<EmailAddr>,
+    pub to: Vec<EmailAddr>,
     #[serde(rename = "Content")]
-    content: MessageContent,
+    pub content: MessageContent,
     #[serde(rename = "Created")]
-    created: DateTime<Utc>,
+    pub created: DateTime<Utc>,
 }
 
 impl PartialOrd<Self> for Message {
@@ -95,11 +95,11 @@ impl Ord for Message {
 
 #[derive(Debug, Clone, Eq, PartialEq, serde::Serialize, serde::Deserialize)]
 pub struct MessageList {
-    total: i64,
-    start: i64,
-    count: i64,
+    pub total: i64,
+    pub start: i64,
+    pub count: i64,
     #[serde(default)]
-    items: Vec<Message>,
+    pub items: Vec<Message>,
 }
 
 impl MailHog {
